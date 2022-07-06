@@ -1,11 +1,24 @@
 #pragma once
-#include "Character.h"
-class CMonster :
-	public CCharacter
+
+#include "value.h"
+
+class CMonster
 {
 public:
 	CMonster();
-	virtual ~CMonster();
+	~CMonster();
 
+private:
+	PCHARACTER  m_pInfo;
+	int			iGold;
+
+	friend class CStageEasy;
+	friend class CStageNormal;
+	friend class CStageHard;
+
+public:
+	void Create(const char* name, int	iMinDamage, int iMaxDamage, int	iMinArmor, int	iMaxArmor,
+		int iHP, int iMP, int iExp, int iLevel, int iGold);
+	void Info();
 };
 

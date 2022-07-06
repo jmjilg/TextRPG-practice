@@ -26,18 +26,26 @@ T IntInput()
 	}
 }
 
+enum class CHARACTER_TYPE : int
+{
+	PLAYER,
+	MONSTER
+};
+
 typedef struct _tagCharacter
 {
-	int iMinDamage;
-	int iMaxDamage;
-	int iMinArmor;
-	int iMaxArmor;
-	int iHP;
-	int iMP;
-	int iExp;
-	int iLevel;
-	char name[NAME_LENGTH];
-}CHARACTER, PCHATACTER;
+	int					iMinDamage;
+	int					iMaxDamage;
+	int					iMinArmor;
+	int					iMaxArmor;
+	int					iHP;
+	int					iHPmax;
+	int					iMP;
+	int					iMPmax;
+	int					iExp;
+	int					iLevel;
+	char				name[NAME_LENGTH];
+}CHARACTER, *PCHARACTER;
 
 enum MAIN_MENU
 {
@@ -48,3 +56,12 @@ enum MAIN_MENU
 	MM_INFO,
 	MM_END
 };
+
+enum class JOB : int
+{
+	WORRIAR,
+	ARCHER,
+	WIZARD
+};
+
+

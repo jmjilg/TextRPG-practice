@@ -145,7 +145,10 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Stage.cpp" />
+    <ClCompile Include="StageEasy.cpp" />
+    <ClCompile Include="StageHard.cpp" />
     <ClCompile Include="StageManager.cpp" />
+    <ClCompile Include="StageNormal.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
@@ -154,8 +157,14 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageEasy.h" />
+    <ClInclude Include="StageHard.h" />
     <ClInclude Include="StageManager.h" />
+    <ClInclude Include="StageNormal.h" />
     <ClInclude Include="value.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

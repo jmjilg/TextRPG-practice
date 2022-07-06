@@ -5,7 +5,7 @@ public:
 	CStageManager();
 	~CStageManager();
 
-private:
+public:
 	static CStageManager* m_pInst;
 
 public:
@@ -16,5 +16,9 @@ public:
 
 		return m_pInst;
 	}
+
+public:
+	void Init();
+	void Run();
 };
 

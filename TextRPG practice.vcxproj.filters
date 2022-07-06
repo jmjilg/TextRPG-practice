@@ -45,6 +45,15 @@
     <ClCompile Include="Character.cpp">
       <Filter>03. Character</Filter>
     </ClCompile>
+    <ClCompile Include="StageEasy.cpp">
+      <Filter>02. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="StageHard.cpp">
+      <Filter>02. Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="StageNormal.cpp">
+      <Filter>02. Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="value.h">
@@ -71,5 +80,17 @@
     <ClInclude Include="Character.h">
       <Filter>03. Character</Filter>
     </ClInclude>
+    <ClInclude Include="StageEasy.h">
+      <Filter>02. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageHard.h">
+      <Filter>02. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="StageNormal.h">
+      <Filter>02. Stage</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

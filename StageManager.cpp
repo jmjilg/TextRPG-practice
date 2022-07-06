@@ -12,3 +12,11 @@ CStageManager::~CStageManager()
 {
 	SAFE_DELETE(m_pInst)
 }
+
+void CStageManager::Init()
+{
+}
+
+void CStageManager::Run()
+{
+}
