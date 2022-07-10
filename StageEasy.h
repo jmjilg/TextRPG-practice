@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Monster.h"
-
+class CMonster;
+class CPlayer;
 class CStageEasy
 {
 public:
@@ -9,10 +9,11 @@ public:
 	~CStageEasy();
 
 private:
-	CMonster* pMonster;
+	CMonster* m_pMonster;
 
 public:
 	void Init();
-	void Run();
+	void Run(class CPlayer* pPlayer);
+	void Battle(CPlayer* pPlayer, CMonster* pMonster);
 };
 

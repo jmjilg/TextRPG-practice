@@ -1,9 +1,17 @@
 
 #pragma once
 #include <iostream>
-#include "Macro.h"
+#include <time.h>
+#include <unordered_map>
+#include <string>
+#include <vector>
+#include <iterator>
+
 
 using namespace std;
+
+#include "defines.h"
+#include "Flags.h"
 
 #define NAME_LENGTH		256
 
@@ -26,12 +34,6 @@ T IntInput()
 	}
 }
 
-enum class CHARACTER_TYPE : int
-{
-	PLAYER,
-	MONSTER
-};
-
 typedef struct _tagCharacter
 {
 	int					iMinDamage;
@@ -46,22 +48,3 @@ typedef struct _tagCharacter
 	int					iLevel;
 	char				name[NAME_LENGTH];
 }CHARACTER, *PCHARACTER;
-
-enum MAIN_MENU
-{
-	MM_NONE,
-	MM_MAP,
-	MM_STORE,
-	MM_INVENTORY,
-	MM_INFO,
-	MM_END
-};
-
-enum class JOB : int
-{
-	WORRIAR,
-	ARCHER,
-	WIZARD
-};
-
-

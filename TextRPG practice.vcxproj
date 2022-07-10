@@ -143,6 +143,8 @@
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="Obj.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="StageEasy.cpp" />
@@ -153,8 +155,11 @@
   <ItemGroup>
     <ClInclude Include="Character.h" />
     <ClInclude Include="Core.h" />
-    <ClInclude Include="Macro.h" />
+    <ClInclude Include="Flags.h" />
+    <ClInclude Include="defines.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="Obj.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageEasy.h" />

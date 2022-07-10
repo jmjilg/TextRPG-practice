@@ -1,24 +1,28 @@
 #pragma once
 
-#include "value.h"
+#include "Character.h"
 
-class CMonster
+class CMonster	:
+	public CCharacter
 {
 public:
 	CMonster();
-	~CMonster();
+	virtual ~CMonster();
 
 private:
-	PCHARACTER  m_pInfo;
-	int			iGold;
+	friend class CObj;
 
-	friend class CStageEasy;
-	friend class CStageNormal;
-	friend class CStageHard;
+private:
+	int m_iGoldMin;
+	int m_iGoldMax;
 
 public:
-	void Create(const char* name, int	iMinDamage, int iMaxDamage, int	iMinArmor, int	iMaxArmor,
-		int iHP, int iMP, int iExp, int iLevel, int iGold);
-	void Info();
+	virtual bool Init();
+	virtual void Render();
+	virtual CObj* Clone();
+	OBJECT_TYPE GetObjectType()
+	{
+		return OBJECT_TYPE::MONSTER;
+	}
 };
 

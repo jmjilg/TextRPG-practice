@@ -1,24 +1,13 @@
 #pragma once
+
+#include "value.h"
+
 class CStageManager
 {
-public:
-	CStageManager();
-	~CStageManager();
-
-public:
-	static CStageManager* m_pInst;
-
-public:
-	static CStageManager* GetInst()
-	{
-		if (!m_pInst)
-			m_pInst = new CStageManager;
-
-		return m_pInst;
-	}
+	DECLARE_SINGLE(CStageManager)
 
 public:
 	void Init();
-	void Run();
+	void Run(class CPlayer* pPlayer);
 };
 

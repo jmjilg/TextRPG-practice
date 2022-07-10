@@ -19,7 +19,10 @@
     <Filter Include="02. Stage">
       <UniqueIdentifier>{5119e1e9-592a-4aaa-acee-ffe17fcb486c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="03. Character">
+    <Filter Include="03. Object">
+      <UniqueIdentifier>{df57a343-3ac6-4f15-a352-c47c284722d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Object\01. Character">
       <UniqueIdentifier>{3381a5e4-7940-4288-9bd8-7657c0003e2f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -37,13 +40,13 @@
       <Filter>02. Stage</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>03. Character</Filter>
+      <Filter>03. Object\01. Character</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>03. Character</Filter>
+      <Filter>03. Object\01. Character</Filter>
     </ClCompile>
     <ClCompile Include="Character.cpp">
-      <Filter>03. Character</Filter>
+      <Filter>03. Object\01. Character</Filter>
     </ClCompile>
     <ClCompile Include="StageEasy.cpp">
       <Filter>02. Stage</Filter>
@@ -54,12 +57,18 @@
     <ClCompile Include="StageNormal.cpp">
       <Filter>02. Stage</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Obj.cpp">
+      <Filter>03. Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="value.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Macro.h">
+    <ClInclude Include="defines.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Core.h">
@@ -72,13 +81,13 @@
       <Filter>02. Stage</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>03. Character</Filter>
+      <Filter>03. Object\01. Character</Filter>
     </ClInclude>
     <ClInclude Include="Monster.h">
-      <Filter>03. Character</Filter>
+      <Filter>03. Object\01. Character</Filter>
     </ClInclude>
     <ClInclude Include="Character.h">
-      <Filter>03. Character</Filter>
+      <Filter>03. Object\01. Character</Filter>
     </ClInclude>
     <ClInclude Include="StageEasy.h">
       <Filter>02. Stage</Filter>
@@ -88,6 +97,15 @@
     </ClInclude>
     <ClInclude Include="StageNormal.h">
       <Filter>02. Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Obj.h">
+      <Filter>03. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Flags.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,21 +1,22 @@
 #pragma once
-#include "value.h"
+#include "Obj.h"
 
-class CCharacter
+class CCharacter	:
+	public CObj
 {
 public:
 	CCharacter();
-	~CCharacter();
+	virtual ~CCharacter();
 
-private:
-	static CCharacter* m_pInst;
+protected:
+	CHARACTER m_Info;
+
 public:
-	static CCharacter* GetInst()
-	{
-		if (!m_pInst)
-			m_pInst = new CCharacter;
+	virtual bool Init();
+	virtual CObj* Clone();
+	virtual void Render();
+	void SetCharacterInfo(const char* name, int iMinDamage, int iMaxDamage, int	iMinArmor, int	iMaxArmor,
+		int iHP, int iMP, int iExp, int iLevel);
 
-		return m_pInst;
-	}
 };
 

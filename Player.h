@@ -1,19 +1,26 @@
 #pragma once
+#include "Character.h"
 
-#include "value.h"
-
-class CPlayer
+class CPlayer :
+	public CCharacter
 {
 public:
 	CPlayer();
-	~CPlayer();
+	virtual ~CPlayer();
 
 private:
-	PCHARACTER m_pInfo;
+	friend class CObj;
+
+private:
+	int m_iGold;
 
 public:
-	void Init();
-	void Create(const char* name, int iMinDamage, int iMaxDamage, int	iMinArmor, int	iMaxArmor,
-		int iHP, int iMP, int iExp, int iLevel);
+	virtual bool Init();
+	virtual void Render();
+	virtual CObj* Clone();
+	OBJECT_TYPE GetObjectType()
+	{
+		return OBJECT_TYPE::PLAYER;
+	}
 };
 
