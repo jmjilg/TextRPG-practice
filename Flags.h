@@ -13,6 +13,7 @@ enum MAIN_MENU
 
 enum class JOB : int
 {
+	NONE,
 	WORRIAR,
 	ARCHER,
 	WIZARD
@@ -20,12 +21,14 @@ enum class JOB : int
 
 enum class BATTLE : int
 {
+	NONE,
 	ATTACK,
 	RUN_AWAY
 };
 
 enum class STAGE_LEVEL : int
 {
+	NONE,
 	EASY,
 	NORMAL,
 	HARD
@@ -33,7 +36,16 @@ enum class STAGE_LEVEL : int
 
 enum class OBJECT_TYPE : int
 {
+	NONE,
 	PLAYER,
 	MONSTER
 };
 
+enum class STAGE_TYPE : int
+{
+	NONE,
+	EASY,
+	NORMAL,
+	HARD,
+	BACK
+};

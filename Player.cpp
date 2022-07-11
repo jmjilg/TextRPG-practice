@@ -25,3 +25,4 @@ CObj* CPlayer::Clone()
 {
 	return new CPlayer(*this);
 }
+

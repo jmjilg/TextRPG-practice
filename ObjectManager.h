@@ -2,13 +2,13 @@
 
 #include "value.h"
 
+class CObj;
 class CObjectManager
 {
 	DECLARE_SINGLE(CObjectManager)
 
 private:
-	static CObjectManager* m_pInst;
-	unordered_map<string, class CObj*> m_mapObj;
+	unordered_map<string, CObj*> m_mapObj;
 
 public:
 	bool Init();

@@ -48,3 +48,15 @@ typedef struct _tagCharacter
 	int					iLevel;
 	char				name[NAME_LENGTH];
 }CHARACTER, *PCHARACTER;
+
+
+template<typename T>
+void Safe_Delete_VecList(T)
+{
+
+}
+template<typename T>
+void Safe_Delete_Map(T& p)
+{
+
+}

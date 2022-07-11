@@ -28,3 +28,4 @@ CObj* CMonster::Clone()
 	return new CMonster(*this);
 }
 
+

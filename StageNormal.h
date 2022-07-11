@@ -2,8 +2,10 @@
 
 #include "Monster.h"
 #include "Player.h"
+#include "Stage.h"
 
-class CStageNormal
+class CStageNormal :
+	public CStage
 {
 public:
 	CStageNormal();
@@ -14,8 +16,7 @@ private:
 
 
 public:
-	void Init();
-	void Run(class CPlayer* pPlayer);
-	void Battle(CPlayer* pPlayer, CMonster* pMonster);
+	virtual bool Init();
+	virtual void Run();
 };
 

@@ -1,19 +1,16 @@
 #pragma once
 
-class CMonster;
-class CPlayer;
-class CStageEasy
+#include "Stage.h"
+
+class CStageEasy	:
+	public CStage
 {
 public:
 	CStageEasy();
 	~CStageEasy();
 
-private:
-	CMonster* m_pMonster;
-
 public:
-	void Init();
-	void Run(class CPlayer* pPlayer);
-	void Battle(CPlayer* pPlayer, CMonster* pMonster);
+	virtual bool Init();
+	virtual void Run();
 };
 

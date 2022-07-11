@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Monster.h"
-#include "Player.h"
+#include"Stage.h"
 
-class CStageHard
+class CStageHard :
+	public CStage
 {
 public:
 	CStageHard();
@@ -14,8 +14,7 @@ private:
 
 
 public:
-	void Init();
-	void Run(class CPlayer* pPlayer);
-	void Battle(CPlayer* pPlayer, CMonster* pMonster);
+	virtual bool Init();
+	virtual void Run();
 };
 

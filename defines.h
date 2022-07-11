@@ -1,8 +1,8 @@
 
 #pragma once
 
-#define SAFE_DELETE(p)		if(p)	{delete p; p = NULL;}
-#define SAFE_DELETE(p)		if(p)	{delete[] p; p = NULL;}
+#define SAFE_DELETE(p)	if(p)	{delete p; p = NULL;}
+#define SAFE_DELETE_ARRAY(p)	if(p)	{delete[] p; p = NULL;}
 
 #define DECLARE_SINGLE(Type)	\
 	private:\
@@ -22,7 +22,7 @@
 		Type();\
 		~Type();
 
-#define DEFINITION_SINGLE(Type)		Type* Type::m_pInst = NULL;
+#define DEFINITION_SINGLE(Type)	Type* Type::m_pInst = NULL;
 
-#define GET_SINGLE(Type)			Type* Type::GetInst();
-#define DESTROY_SINGLE(Type)		Type::DestroyInst();
+#define GET_SINGLE(Type)		Type::GetInst()
+#define DESTROY_SINGLE(Type)	Type::DestroyInst()

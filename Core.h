@@ -7,7 +7,8 @@ class CCore
 	DECLARE_SINGLE(CCore)
 
 public:
-	void Init();
+	bool Init();
 	void Run();
+	int OutputMenu();
 };
 

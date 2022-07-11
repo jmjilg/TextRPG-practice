@@ -1,6 +1,7 @@
 
 #include "StageManager.h"
 #include "value.h"
+#include "Stage.h"
 #include "StageEasy.h"
 #include "StageNormal.h"
 #include "StageHard.h"
@@ -16,12 +17,16 @@ CStageManager::~CStageManager()
 	SAFE_DELETE(m_pInst)
 }
 
-void CStageManager::Init()
+bool CStageManager::Init()
 {
+	return true;
 }
 
-void CStageManager::Run(class CPlayer* pPlayer)
+void CStageManager::Run()
 {
+
+	int input;
+
 	while (true)
 	{
 		system("cls");
@@ -29,31 +34,29 @@ void CStageManager::Run(class CPlayer* pPlayer)
 		cout << "2. 보통" << endl;
 		cout << "3. 어려움" << endl;
 		cout << "난이도를 선택하세요 :";
-		int input = IntInput<int>();
-		switch (input)
-		{
-		case (int)STAGE_LEVEL::EASY:
-		{
-			CStageEasy* CEasy = new CStageEasy;
-			CEasy->Init();
-			CEasy->Run(pPlayer);
-			break;
-		}
-		case (int)STAGE_LEVEL::NORMAL:
-		{
-			CStageNormal* CNormal = new CStageNormal;
-			CNormal->Init();
-			CNormal->Run(pPlayer);
-			break;
-		}
-		case (int)STAGE_LEVEL::HARD:
-		{
-			CStageHard* CHard = new CStageHard;
-			CHard->Init();
-			CHard->Run(pPlayer);
-			break;
-		}
-		}
 
+		input = IntInput<int>();
+
+		if (input < (int)STAGE_LEVEL::EASY || input >(int)STAGE_LEVEL::HARD)
+			continue;
 	}
+
+	CStage* pStage;
+
+	switch (input)
+	{
+	case (int)STAGE_LEVEL::EASY:
+		pStage = new CStageEasy;
+		break;
+	case (int)STAGE_LEVEL::NORMAL:
+		pStage = new CStageNormal;
+		break;
+	case (int)STAGE_LEVEL::HARD:
+		pStage = new CStageHard;
+		break;
+	}
+
+	pStage->Init();
+	pStage->Run();
 }
+

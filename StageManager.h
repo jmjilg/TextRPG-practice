@@ -5,9 +5,10 @@
 class CStageManager
 {
 	DECLARE_SINGLE(CStageManager)
-
+	
 public:
-	void Init();
-	void Run(class CPlayer* pPlayer);
+	bool Init();
+	void Run();
+
 };
 

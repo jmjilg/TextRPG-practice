@@ -14,17 +14,31 @@ CCore::~CCore()
 {
 }
 
-void CCore::Init()
+bool CCore::Init()
 {
+	if (!GET_SINGLE(CObjectManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CStageManager)->Init())
+		return false;
 }
 
 void CCore::Run()
 {
-	
-	CObjectManager::GetInst()->Init();
 
-	CStageManager::GetInst()->Init();
-
+	switch (OutputMenu())
+	{
+	case (int)MAIN_MENU::MM_MAP:
+		break;
+	case (int)MAIN_MENU::MM_STORE:
+		break;
+	case (int)MAIN_MENU::MM_INVENTORY:
+		break;
+	case(int)MAIN_MENU::MM_INFO:
+		break;
+	case(int)MAIN_MENU::MM_END:
+		return;
+	}
 	//cout << "이름을 입력하세요 : ";
 	//char name[NAME_LENGTH];
 	//cin >> name;
@@ -57,31 +71,26 @@ void CCore::Run()
 	//		pPlayer->Create(name, 10, 15, 5, 7, 100, 200, 0, 1);
 	//		break;
 	//	}
-	//	while (true)
-	//	{
-	//		system("cls");
-	//		cout << "1. 맵" << endl;
-	//		cout << "2. 상점" << endl;
-	//		cout << "3. 인벤토리" << endl;
-	//		cout << "4. 플레이어 정보" << endl;
-	//		cout << "5. 종료" << endl;
-	//		cout << "메인 메뉴를 선택하세요 : ";
-	//		input = IntInput<int>();
-
-	//		switch (input)
-	//		{
-	//		case MM_MAP:
-	//			CStageManager::GetInst()->Run(pPlayer);
-	//			break;
-	//		case MM_STORE:
-	//			break;
-	//		case MM_INVENTORY:
-	//			break;
-	//		case MM_INFO:
-	//			break;
-	//		case MM_END:
-	//			return;
-	//		}
-	//	}
 	//}
 }
+
+int CCore::OutputMenu()
+{
+	while (true)
+	{
+		system("cls");
+		cout << "1. 맵" << endl;
+		cout << "2. 상점" << endl;
+		cout << "3. 인벤토리" << endl;
+		cout << "4. 플레이어 정보" << endl;
+		cout << "5. 종료" << endl;
+		cout << "메인 메뉴를 선택하세요 : ";
+		int input = IntInput<int>();
+
+		if (input < 1 || input > 5)
+			continue;
+
+		return input;
+	}
+}
+
