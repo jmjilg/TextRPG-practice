@@ -1,8 +1,10 @@
 
 #include "Monster.h"
+#include "ObjectManager.h"
 
 CMonster::CMonster()
 {
+	Init();
 }
 
 CMonster::~CMonster()
@@ -11,8 +13,6 @@ CMonster::~CMonster()
 
 bool CMonster::Init()
 {
-	m_iGoldMin = 0;
-	m_iGoldMax = 0;
 
 	return true;
 }
@@ -26,6 +26,22 @@ void CMonster::Render()
 CObj* CMonster::Clone()
 {
 	return new CMonster(*this);
+}
+
+int CMonster::GetGold()
+{
+	return rand() % (m_iGoldMax - m_iGoldMin + 1) + m_iGoldMin;
+}
+
+int CMonster::GetExp()
+{
+	return m_tInfo.iExp;
+}
+
+void CMonster::SetGold(int iGoldMin, int iGoldMax)
+{
+	m_iGoldMin = iGoldMin;
+	m_iGoldMax = iGoldMax;
 }
 
 

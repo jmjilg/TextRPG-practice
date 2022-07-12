@@ -5,5 +5,6 @@ int main()
 {
 	srand((unsigned int)time(0));
 
-	CCore::GetInst()->Run();
+	GET_SINGLE(CCore)->Init();
+	GET_SINGLE(CCore)->Run();
 }

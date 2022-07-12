@@ -24,5 +24,8 @@ public:
 	{
 		return OBJECT_TYPE::MONSTER;
 	}
+	int GetGold();
+	int GetExp();
+	void SetGold(int iGoldMin, int iGoldMax);
 };
 

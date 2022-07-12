@@ -1,4 +1,5 @@
 #include "ObjectManager.h"
+#include "Obj.h"
 #include "Player.h"
 #include "Monster.h"
 
@@ -14,6 +15,26 @@ CObjectManager::~CObjectManager()
 
 bool CObjectManager::Init()
 {
+	CPlayer* pPlayer = NULL;
+
+	pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->CreateObject("Player", OBJECT_TYPE::PLAYER);
+	pPlayer->Init();
+
+	CMonster* pMonster = NULL;
+
+	pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CreateObject("Goblin", OBJECT_TYPE::MONSTER);
+	pMonster->SetCharacterInfo("°íºí¸°", 5, 10, 5, 10, 100, 100, 100, 1);
+	pMonster->SetGold(1000, 1500);	
+
+	pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CreateObject("Troll", OBJECT_TYPE::MONSTER);
+	pMonster->SetCharacterInfo("Troll", 10, 20, 20, 30, 400, 200, 300, 5);
+	pMonster->SetGold(3000, 5000);
+
+	pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CreateObject("Dragon", OBJECT_TYPE::MONSTER);
+	pMonster->SetCharacterInfo("Dragon", 50, 70, 40, 60, 700, 500, 1000, 1);
+	pMonster->SetGold(10000, 15000);
+
+
 	return true;
 }
 

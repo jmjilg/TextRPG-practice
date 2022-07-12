@@ -19,19 +19,13 @@ enum class JOB : int
 	WIZARD
 };
 
-enum class BATTLE : int
-{
-	NONE,
-	ATTACK,
-	RUN_AWAY
-};
-
 enum class STAGE_LEVEL : int
 {
 	NONE,
 	EASY,
 	NORMAL,
-	HARD
+	HARD,
+	BACK
 };
 
 enum class OBJECT_TYPE : int
