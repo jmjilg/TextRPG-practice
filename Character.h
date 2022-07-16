@@ -4,12 +4,15 @@
 class CCharacter	:
 	public CObj
 {
-public:
+protected:
 	CCharacter();
 	virtual ~CCharacter();
 
 protected:
 	CHARACTER m_tInfo;
+
+private:
+	friend class CObjectManager;
 
 public:
 	virtual bool Init();

@@ -25,6 +25,15 @@
     <Filter Include="03. Object\01. Character">
       <UniqueIdentifier>{3381a5e4-7940-4288-9bd8-7657c0003e2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="04. Store">
+      <UniqueIdentifier>{bb037489-28c2-457a-a83b-2abca1e6173d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Object\02. Item">
+      <UniqueIdentifier>{8b391685-47b8-4f17-a670-04a30221d806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="05. Inventory">
+      <UniqueIdentifier>{741bc09b-d4fc-4a00-80c0-f2461abbfd32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,6 +71,30 @@
     </ClCompile>
     <ClCompile Include="Obj.cpp">
       <Filter>03. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreManager.cpp">
+      <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreArmor.cpp">
+      <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="StoreWeapon.cpp">
+      <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemWeapon.cpp">
+      <Filter>03. Object\02. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemArmor.cpp">
+      <Filter>03. Object\02. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>03. Object\02. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>05. Inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Store.cpp">
+      <Filter>04. Store</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,8 +140,33 @@
     <ClInclude Include="Flags.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="StoreManager.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreArmor.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="StoreWeapon.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemWeapon.h">
+      <Filter>03. Object\02. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemArmor.h">
+      <Filter>03. Object\02. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>03. Object\02. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>05. Inventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Store.h">
+      <Filter>04. Store</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

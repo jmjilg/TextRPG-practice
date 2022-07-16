@@ -14,6 +14,10 @@ using namespace std;
 #include "Flags.h"
 
 #define NAME_LENGTH		256
+#define STR_DESC_LENGTH		256
+#define WEAPON_COUNT	3
+#define ARMOR_COUNT		3
+#define INVENTORY_SLOTMAX	10
 
 template<typename T>
 T IntInput()
@@ -49,14 +53,40 @@ typedef struct _tagCharacter
 	char				name[NAME_LENGTH];
 }CHARACTER, *PCHARACTER;
 
-
-template<typename T>
-void Safe_Delete_VecList(T)
+typedef struct _tagItem
 {
+	ITEM_TYPE	eType;
+	string strTypeName;
+	int iPrice;
+	int iSell;
+	char strDesc[STR_DESC_LENGTH];
+}ITEMINFO, *PITEMINFO;
 
+
+template <typename T>
+void Safe_Delete_VecList(T& p)
+{
+	typename T::iterator iter;
+	typename T::iterator iterEnd = p.end();
+
+	for (iter = p.begin(); iter != iterEnd; ++iter)
+	{
+		SAFE_DELETE(*iter);
+	}
+	
+	p.clear();
 }
-template<typename T>
+template <typename T>
 void Safe_Delete_Map(T& p)
 {
+	typename T::iterator iter;
+	typename T::iterator iterEnd = p.end();
+	
+	for (iter = p.begin(); iter != iterEnd; ++iter)
+	{
+		SAFE_DELETE(iter->second);
+	}
+
+	p.clear();
 
 }

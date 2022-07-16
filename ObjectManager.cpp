@@ -2,6 +2,8 @@
 #include "Obj.h"
 #include "Player.h"
 #include "Monster.h"
+#include "ItemWeapon.h"
+#include "ItemArmor.h"
 
 DEFINITION_SINGLE(CObjectManager)
 
@@ -49,6 +51,12 @@ CObj* CObjectManager::CreateObject(const string& strKey, OBJECT_TYPE eType)
 		break;
 	case OBJECT_TYPE::MONSTER:
 		pObj = new CMonster;
+		break;
+	case OBJECT_TYPE::WEAPON:
+		pObj = new CItemWeapon;
+		break;
+	case OBJECT_TYPE::ARMOR:
+		pObj = new CItemArmor;
 		break;
 	}
 

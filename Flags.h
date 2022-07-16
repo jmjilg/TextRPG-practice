@@ -32,7 +32,9 @@ enum class OBJECT_TYPE : int
 {
 	NONE,
 	PLAYER,
-	MONSTER
+	MONSTER,
+	WEAPON,
+	ARMOR
 };
 
 enum class STAGE_TYPE : int
@@ -43,3 +45,19 @@ enum class STAGE_TYPE : int
 	HARD,
 	BACK
 };
+
+enum class STORE_MENU
+{
+	NONE,
+	WEAPON,
+	ARMOR,
+	BACK
+};
+
+enum class ITEM_TYPE
+{
+	NONE,
+	WEAPON,
+	ARMOR
+};
+

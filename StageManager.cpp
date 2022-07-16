@@ -14,11 +14,15 @@ CStageManager::CStageManager()
 
 CStageManager::~CStageManager()
 {
-	SAFE_DELETE(m_pInst)
+	Safe_Delete_VecList(m_vecStage);
 }
 
 bool CStageManager::Init()
 {
+	CreateStage(STAGE_LEVEL::EASY);
+	CreateStage(STAGE_LEVEL::NORMAL);
+	CreateStage(STAGE_LEVEL::HARD);
+
 	return true;
 }
 
@@ -41,25 +45,39 @@ void CStageManager::Run()
 		if (input <= (int)STAGE_LEVEL::NONE || input > (int)STAGE_LEVEL::BACK)
 			continue;
 
-		CStage* pStage = NULL;
-
-		switch (input)
-		{
-		case (int)STAGE_LEVEL::EASY:
-			pStage = new CStageEasy;
-			break;
-		case (int)STAGE_LEVEL::NORMAL:
-			pStage = new CStageNormal;
-			break;
-		case (int)STAGE_LEVEL::HARD:
-			pStage = new CStageHard;
-			break;
-		case (int)STAGE_LEVEL::BACK:
+		if (input == (int)STAGE_LEVEL::BACK)
 			return;
-		}
+		
+		m_vecStage[input-1]->Run();
 
-		pStage->Init();
-		pStage->Run();
 	}
+}
+
+bool CStageManager::CreateStage(STAGE_LEVEL eType)
+{
+	CStage* pStage = NULL;
+
+	switch (eType)
+	{
+	case STAGE_LEVEL::EASY:
+		pStage = new CStageEasy;
+		break;
+	case STAGE_LEVEL::NORMAL:
+		pStage = new CStageNormal;
+		break;
+	case STAGE_LEVEL::HARD:
+		pStage = new CStageHard;
+		break;
+	}
+
+	if (!pStage->Init())
+	{
+		SAFE_DELETE(pStage)
+			return false;
+	}
+
+	m_vecStage.push_back(pStage);
+
+	return true;
 }
 

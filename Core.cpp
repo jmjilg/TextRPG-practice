@@ -3,6 +3,7 @@
 #include "value.h"
 #include "ObjectManager.h"
 #include "StageManager.h"
+#include "StoreManager.h"
 
 DEFINITION_SINGLE(CCore)
 
@@ -12,6 +13,9 @@ CCore::CCore()
 
 CCore::~CCore()
 {
+	DESTROY_SINGLE(CObjectManager);
+	DESTROY_SINGLE(CStageManager);
+	DESTROY_SINGLE(CStoreManager);
 }
 
 bool CCore::Init()
@@ -20,6 +24,9 @@ bool CCore::Init()
 		return false;
 
 	if (!GET_SINGLE(CStageManager)->Init())
+		return false;
+
+	if (!GET_SINGLE(CStoreManager)->Init())
 		return false;
 }
 
@@ -33,6 +40,7 @@ void CCore::Run()
 			GET_SINGLE(CStageManager)->Run();
 			break;
 		case (int)MAIN_MENU::MM_STORE:
+			GET_SINGLE(CStoreManager)->Run();
 			break;
 		case (int)MAIN_MENU::MM_INVENTORY:
 			break;

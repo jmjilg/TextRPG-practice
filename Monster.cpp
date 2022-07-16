@@ -20,7 +20,7 @@ bool CMonster::Init()
 void CMonster::Render()
 {
 	CCharacter::Render();
-	cout << "소지금 : " << m_iGoldMin << "~" << m_iGoldMax << endl << endl;
+	cout << "\t소지금 : " << m_iGoldMin << "~" << m_iGoldMax << endl << endl;
 }
 
 CObj* CMonster::Clone()

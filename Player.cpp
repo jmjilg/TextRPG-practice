@@ -11,6 +11,15 @@ CPlayer::~CPlayer()
 {
 }
 
+CPlayer::CPlayer(const CPlayer& player)	:
+	CCharacter(player)
+{
+	m_iGold = player.m_iGold;
+	m_eJob = player.m_eJob;
+	m_strJobName = player.m_strJobName;
+	memset(m_pEquip, 0, sizeof(CItem*)*(int)EQUIP::END);
+}
+
 bool CPlayer::Init()
 {
 	char pName[NAME_LENGTH];
@@ -38,7 +47,7 @@ bool CPlayer::Init()
 void CPlayer::Render()
 {
 	CCharacter::Render();
-	cout << "소지금 : " << m_iGold << endl << endl;
+	cout << "\t소지금 : " << m_iGold << endl << endl;
 }
 
 CObj* CPlayer::Clone()

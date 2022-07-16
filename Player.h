@@ -1,18 +1,31 @@
 #pragma once
 #include "Character.h"
 
+class CItem;
 class CPlayer :
 	public CCharacter
 {
 public:
 	CPlayer();
 	virtual ~CPlayer();
+	CPlayer(const CPlayer& player);
+
+private:
+	enum class EQUIP
+	{
+		WEAPON,
+		ARMOR,
+		END
+	};
 
 private:
 	friend class CObj;
 
 private:
+	JOB     m_eJob;
+	string  m_strJobName;
 	int m_iGold;
+	CItem* m_pEquip[(int)EQUIP::END];
 
 public:
 	virtual bool Init();
@@ -45,5 +58,6 @@ public:
 	{
 		m_tInfo.iHP = m_tInfo.iHPmax;
 	}
+
 };
 
