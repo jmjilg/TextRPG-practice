@@ -20,11 +20,12 @@ protected:
 	ITEMINFO	m_tInfo;
 
 public:
+	bool Init();
+	virtual void Render() = 0;
 	ITEM_TYPE GetItemType()
 	{
 		return m_tInfo.eType;
 	}
-	virtual void Render();
 	OBJECT_TYPE GetObjectType()
 	{
 		return OBJECT_TYPE::MONSTER;

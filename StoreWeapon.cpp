@@ -2,6 +2,8 @@
 #include "ObjectManager.h"
 #include "ItemWeapon.h"
 #include "Item.h"
+#include "Player.h"
+#include "Inventory.h"
 
 CStoreWeapon::CStoreWeapon()
 {
@@ -30,6 +32,36 @@ bool CStoreWeapon::Init()
 
 void CStoreWeapon::Run()
 {
+	CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->FindObject("Player");
+
+	while (true)
+	{
+
+		int input = OutputMenu();
+		if (input == WEAPON_COUNT + 1)
+			return;
+
+		if (pPlayer->GetGold() < m_vecItem[input - 1]->GetPrice())
+		{
+			cout << "금액이 부족합니다." << endl;
+			system("pause");
+			continue;
+		}
+
+		else if (GET_SINGLE(CInventory)->InventoryMax())
+		{
+			cout << "공간이 부족합니다" << endl;
+			system("pause");
+			continue;
+		}
+
+
+		pPlayer->SetGold(-m_vecItem[input - 1]->GetPrice());
+
+		CItem* pItem = (CItem*)m_vecItem[input - 1]->Clone();
+
+		GET_SINGLE(CInventory)->AddItem(pItem);
+	}
 }
 
 int CStoreWeapon::OutputMenu()
@@ -37,16 +69,17 @@ int CStoreWeapon::OutputMenu()
 	while (true)
 	{
 		system("cls");
-		cout << "====================== 방어구상점 ======================" << endl;
+		cout << "====================== 무기 상점 ======================" << endl;
 		for (int i = 0; i < ARMOR_COUNT; ++i)
 		{
 			cout << i + 1 << ". ";
 			m_vecItem[i]->Render();
 			cout << endl;
 		}
-
 		cout << "4. 뒤로가기" << endl;
-		cout << "보유금액 :" << endl;
+
+		CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->FindObject("Player");
+		cout << "보유금액 :" << pPlayer->GetGold() << endl;
 
 		int input = IntInput<int>();
 

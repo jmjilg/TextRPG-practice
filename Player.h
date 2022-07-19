@@ -20,6 +20,7 @@ private:
 
 private:
 	friend class CObj;
+	friend class CInventory;
 
 private:
 	JOB     m_eJob;
@@ -58,6 +59,16 @@ public:
 	{
 		m_tInfo.iHP = m_tInfo.iHPmax;
 	}
+
+	bool EquipEmpty(ITEM_TYPE eType)
+	{
+		if (m_pEquip[(int)eType-1] == NULL)
+			return true;
+
+		return false;
+	}
+	
+	CItem* Equip(CItem* pItem);
 
 };
 

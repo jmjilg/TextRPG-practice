@@ -15,8 +15,9 @@ CItem::~CItem()
 {
 }
 
-void CItem::Render()
+bool CItem::Init()
 {
+	return true;
 }
 
 void CItem::SetItemInfo(ITEM_TYPE eType, int iPrice, int iSell, const char* pDesc)

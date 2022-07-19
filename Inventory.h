@@ -2,12 +2,13 @@
 
 #include "value.h"
 
+class CItem;
 class CInventory
 {
 	DECLARE_SINGLE(CInventory)
 
 private:
-	vector<class CItem*> m_vecItem;
+	vector<CItem*> m_vecItem;
 	int m_iInvenMax;
 
 public:
@@ -17,5 +18,7 @@ public:
 	{
 		return m_vecItem.size() == m_iInvenMax;
 	}
+	void AddItem(CItem* pItem);
+	void Render();
 };
 

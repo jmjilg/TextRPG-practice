@@ -16,7 +16,7 @@ void CItemWeapon::Render()
 	cout << "Ό³Έν : " << m_tInfo.strDesc << endl << endl;
 }
 
-CObj* CItemWeapon::Clone()
+CItem* CItemWeapon::Clone()
 {
 	return new CItemWeapon(*this);
 }

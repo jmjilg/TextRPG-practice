@@ -17,7 +17,7 @@ void CItemArmor::Render()
 	cout << "Ό³Έν : " << m_tInfo.strDesc << endl << endl;
 }
 
-CObj* CItemArmor::Clone()
+CItem* CItemArmor::Clone()
 {
 	return new CItemArmor(*this);
 }

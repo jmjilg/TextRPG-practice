@@ -1,7 +1,9 @@
 #include "StoreArmor.h"
 #include "ItemArmor.h"
+#include "Item.h"
 #include "ObjectManager.h"
 #include "Character.h"
+#include "Obj.h"
 #include "Player.h"
 #include "Inventory.h"
 
@@ -36,6 +38,7 @@ void CStoreArmor::Run()
 
 	while (true)
 	{
+
 		int input = OutputMenu();
 		if (input == ARMOR_COUNT + 1)
 			return;
@@ -43,16 +46,23 @@ void CStoreArmor::Run()
 		if (pPlayer->GetGold() < m_vecItem[input - 1]->GetPrice())
 		{
 			cout << "금액이 부족합니다." << endl;
+			system("pause");
 			continue;
 		}
 
 		else if (GET_SINGLE(CInventory)->InventoryMax())
 		{
 			cout << "공간이 부족합니다" << endl;
+			system("pause");
 			continue;
 		}
 
 
+		pPlayer->SetGold(-m_vecItem[input - 1]->GetPrice());
+		
+		CItem* pItem = (CItem*)m_vecItem[input - 1]->Clone();
+
+		GET_SINGLE(CInventory)->AddItem(pItem);
 	}
 }
 
@@ -65,12 +75,13 @@ int CStoreArmor::OutputMenu()
 		for (int i = 0; i < ARMOR_COUNT; ++i)
 		{
 			cout << i + 1 << ". ";
-			m_vecItem[i]->Render();
+			m_vecItem[i]->Render(); 
 			cout << endl;
 		}
-
 		cout << "4. 뒤로가기" << endl;
-		cout << "보유금액 :" << endl;
+
+		CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->FindObject("Player");
+		cout << "보유금액 :" << pPlayer->GetGold()<< endl;
 
 		int input = IntInput<int>();
 

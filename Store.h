@@ -19,7 +19,7 @@ protected:
 	vector<CItem*> m_vecItem;
 
 public:
-	bool Init();
+	virtual bool Init() = 0;
 	virtual void Run() = 0;
 	virtual int OutputMenu() = 0;
 	ITEM_TYPE GetItemType()	const

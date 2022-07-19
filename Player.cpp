@@ -1,23 +1,24 @@
 
 #include "Player.h"
 #include "ObjectManager.h"
+#include "Item.h"
 
 CPlayer::CPlayer()
 {
-
+	memset(m_pEquip, 0, sizeof(CItem*) * 2);
 }
 
 CPlayer::~CPlayer()
 {
 }
 
-CPlayer::CPlayer(const CPlayer& player)	:
+CPlayer::CPlayer(const CPlayer& player) :
 	CCharacter(player)
 {
 	m_iGold = player.m_iGold;
 	m_eJob = player.m_eJob;
 	m_strJobName = player.m_strJobName;
-	memset(m_pEquip, 0, sizeof(CItem*)*(int)EQUIP::END);
+	memset(m_pEquip, 0, sizeof(CItem*) * (int)EQUIP::END);
 }
 
 bool CPlayer::Init()
@@ -47,7 +48,25 @@ bool CPlayer::Init()
 void CPlayer::Render()
 {
 	CCharacter::Render();
-	cout << "\t소지금 : " << m_iGold << endl << endl;
+	cout << "\t소지금 : " << m_iGold << endl;
+	cout << "무기 : ";
+	if (!EquipEmpty(ITEM_TYPE::WEAPON))
+		m_pEquip[(int)EQUIP::WEAPON]->Render();
+
+	else
+		cout << "없음";
+
+	cout << endl;
+
+	cout << "방어구 : ";
+	if (!EquipEmpty(ITEM_TYPE::ARMOR))
+		m_pEquip[(int)EQUIP::ARMOR]->Render();
+
+	else
+		cout << "없음";
+
+
+	cout << endl << endl;
 }
 
 CObj* CPlayer::Clone()
@@ -76,7 +95,7 @@ int CPlayer::SetPlayerJob()
 		cout << "직업을 선택하세요: ";
 		int input = IntInput<int>();
 
-		if (input <= (int)JOB::NONE || input >(int)JOB::WIZARD) {
+		if (input <= (int)JOB::NONE || input > (int)JOB::WIZARD) {
 			cin.ignore();
 			continue;
 		}
@@ -85,4 +104,29 @@ int CPlayer::SetPlayerJob()
 	}
 
 }
+
+CItem* CPlayer::Equip(CItem* pItem)
+{
+	CItem* temp = NULL;
+
+	switch (pItem->GetItemType())
+	{
+	case ITEM_TYPE::WEAPON:
+		if (!EquipEmpty(ITEM_TYPE::WEAPON))
+			temp = m_pEquip[(int)EQUIP::WEAPON];
+
+		m_pEquip[(int)EQUIP::WEAPON] = pItem;
+		break;
+	case ITEM_TYPE::ARMOR:
+		if (!EquipEmpty(ITEM_TYPE::ARMOR))
+			temp = m_pEquip[(int)EQUIP::ARMOR];
+
+		m_pEquip[(int)EQUIP::ARMOR] = pItem;
+		break;
+	}
+
+	return temp;
+}
+
+
 

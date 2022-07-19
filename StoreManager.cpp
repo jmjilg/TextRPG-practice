@@ -21,25 +21,32 @@ CStoreManager::~CStoreManager()
 bool CStoreManager::Init()
 {
 	CStore* pStore = CreateStore(STORE_MENU::WEAPON);
+	pStore->Init();
+	m_vecStore.push_back(pStore);
+	
 	pStore = CreateStore(STORE_MENU::ARMOR);
-
-	//m_vecStore.push_back(new CStoreArmor);
-	//m_vecStore.push_back(new CStoreWeapon);
+	pStore->Init();
+	m_vecStore.push_back(pStore);
 
 	return true;
 }
 
 void CStoreManager::Run()
 {
+	while (true)
+	{
 		CStore* pStore = NULL;
 
 		int input = OutputMenu();
 
+		if (input <= (int)STORE_MENU::NONE || input >(int)STORE_MENU::BACK)
+			continue;
+
 		if (input == (int)STORE_MENU::BACK)
 			return;
 
-		m_vecStore[input]->Run();
-
+		m_vecStore[input - 1]->Run();
+	}
 }
 
 int CStoreManager::OutputMenu()
@@ -56,7 +63,7 @@ int CStoreManager::OutputMenu()
 
 		if (input <= (int)STORE_MENU::NONE || input > (int)STORE_MENU::BACK)
 			continue;
-		
+
 		return input;
 	}
 

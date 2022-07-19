@@ -23,7 +23,7 @@ private:
 
 public:
 	virtual void Render();
-	virtual CObj* Clone();
+	virtual CItem* Clone();
 	OBJECT_TYPE GetObjectType()
 	{
 		return OBJECT_TYPE::MONSTER;
