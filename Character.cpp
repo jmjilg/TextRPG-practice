@@ -1,4 +1,3 @@
-
 #include "Character.h"
 
 CCharacter::CCharacter()
@@ -61,7 +60,7 @@ CObj* CCharacter::Clone()
 void CCharacter::Render()
 {
 	cout << "이름 : " << m_tInfo.name << "\t경험치 : " << m_tInfo.iExp << endl;
-	cout << "공격력 : " << m_tInfo.iMinDamage << "~" << m_tInfo.iMaxDamage <<
+	cout << "공격력 : " << m_tInfo.iMinDamage  << "~" << m_tInfo.iMaxDamage <<
 		"\t방어력 : " << m_tInfo.iMinArmor << "~" << m_tInfo.iMaxArmor << endl;
 	cout << "체력 : " << m_tInfo.iHP << "/" << m_tInfo.iHPmax << "\t마력 : " <<
 		m_tInfo.iMP << "/" << m_tInfo.iMPmax << endl;

@@ -20,7 +20,7 @@ bool CStageEasy::Init()
 
 void CStageEasy::Run()
 {
-	CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->CloneObject("Player");
+	CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->FindObject("Player");
 	CMonster* pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CloneObject("Goblin");
 
 
@@ -50,6 +50,11 @@ void CStageEasy::Run()
 			pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CloneObject("Goblin");
 
 			cout << "고블린을 해치웠다!" << endl;
+
+			if (pPlayer->LevelupCheck())
+			{
+				pPlayer->Levelup(pPlayer->GetJob());
+			}
 			system("pause");
 			break;
 		case BATTLE_FLAG::PLAYER_DIE:

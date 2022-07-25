@@ -20,8 +20,15 @@ CCore::~CCore()
 	DESTROY_SINGLE(CInventory);
 }
 
+LEVELUPINFO CCore::GetLevelupInfo(JOB eJob)
+{
+	return m_tLevelupInfo[(int)eJob - 1]; // 오류 발생
+}
+
 bool CCore::Init()
 {
+	SetLevelupInfo();
+
 	if (!GET_SINGLE(CObjectManager)->Init())
 		return false;
 
@@ -33,6 +40,8 @@ bool CCore::Init()
 
 	if (!GET_SINGLE(CInventory)->Init())
 		return false;
+
+	LEVELUPINFO _taglevelupInfo[(int)JOB::WIZARD];
 }
 
 void CCore::Run()
@@ -76,5 +85,25 @@ int CCore::OutputMenu()
 
 		return input;
 	}
+}
+
+LEVELUPINFO CCore::CreateLevelupInfo(int iMinDamage, int iMaxDamage, int iMinArmor, int iMaxArmor, int iHP, int iMP)
+{
+	LEVELUPINFO temp;
+	temp.iMinDamage = iMinDamage;
+	temp.iMaxDamage = iMaxDamage;
+	temp.iMinArmor = iMinArmor;
+	temp.iMaxArmor = iMaxArmor;
+	temp.iHP = iHP;
+	temp.iMP = iMP;
+
+	return temp;
+}
+
+void CCore::SetLevelupInfo()
+{
+	m_tLevelupInfo[(int)JOB::WORRIAR - 1] = CreateLevelupInfo(5, 10, 15, 20, 100, 10);
+	m_tLevelupInfo[(int)JOB::ARCHER - 1] = CreateLevelupInfo(10, 15, 10, 15, 80, 30);
+	m_tLevelupInfo[(int)JOB::WIZARD - 1] = CreateLevelupInfo(15, 20, 5, 10, 50, 50);
 }
 

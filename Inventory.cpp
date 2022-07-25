@@ -27,7 +27,7 @@ void CInventory::Run()
 		system("cls");
 		CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->FindObject("Player");
 		cout << "===================== Inventory =====================" << endl;
-		pPlayer->Render();
+		pPlayer->Render(); // 오류 발생
 		Render();
 
 		int input = IntInput<int>();
@@ -35,7 +35,7 @@ void CInventory::Run()
 		if (input <= 0 || input > m_vecItem.size() + 1)
 			continue;
 
-		else if (input == m_vecItem.size())
+		else if (input == m_vecItem.size()+1)
 			return;
 		
 		// 아무런 장착도 하지 않았을 경우
@@ -67,7 +67,7 @@ void CInventory::Render()
 			cout << i + 1 << ". ";
 			m_vecItem[i]->Render();
 	}
-	cout << m_vecItem.size() << ". 뒤로가기" << endl;
+	cout << m_vecItem.size() + 1 << ". 뒤로가기" << endl;
 	cout << "장착할 아이템을 선택하시요 : ";
 }
 

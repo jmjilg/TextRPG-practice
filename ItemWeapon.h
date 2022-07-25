@@ -16,6 +16,7 @@ private:
 	friend class CStore;
 	friend class CStoreWeapon;
 	friend class CStoreManager;
+	friend class CInventory;
 
 private:
 	int m_iAttackMin;
@@ -34,6 +35,14 @@ public:
 		m_iAttackMin = iAttackMin;
 		m_iAttackMax = iAttackMax;
 		m_fCritical = iCritical;
+	}
+	int GetAttackMin()	const
+	{
+		return m_iAttackMin;
+	}
+	int GetAttackMax()	const
+	{
+		return m_iAttackMax;
 	}
 };
 

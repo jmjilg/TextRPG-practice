@@ -10,6 +10,7 @@ class CInventory
 private:
 	vector<CItem*> m_vecItem;
 	int m_iInvenMax;
+	friend class CPlayer;
 
 public:
 	bool Init();

@@ -32,6 +32,14 @@ public:
 	{
 		m_iArmorMin = iArmorMin;
 		m_iArmorMax = iArmorMax;
+	}	
+	int GetArmorMin()	const
+	{
+		return m_iArmorMin;
+	}
+	int GetArmorMax()	const
+	{
+		return m_iArmorMax;
 	}
 };
 

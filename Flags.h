@@ -16,7 +16,8 @@ enum class JOB : int
 	NONE,
 	WORRIAR,
 	ARCHER,
-	WIZARD
+	WIZARD,
+	MAX
 };
 
 enum class STAGE_LEVEL : int

@@ -34,6 +34,8 @@ public:
 	virtual CObj* Clone();
 	char* SetPlayerName();
 	int SetPlayerJob();
+	virtual int GetDamage();
+	virtual int GetArmor();
 
 	OBJECT_TYPE GetObjectType()
 	{
@@ -66,9 +68,15 @@ public:
 			return true;
 
 		return false;
-	}
-	
+	}	
+
 	CItem* Equip(CItem* pItem);
+	bool LevelupCheck();
+	void Levelup(JOB eJob);
+	JOB GetJob()
+	{
+		return m_eJob;
+	}
 
 };
 

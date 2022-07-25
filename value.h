@@ -13,7 +13,7 @@ using namespace std;
 #include "defines.h"
 #include "Flags.h"
 
-#define NAME_LENGTH		256
+#define NAME_LENGTH		32
 #define STR_DESC_LENGTH		256
 #define WEAPON_COUNT	3
 #define ARMOR_COUNT		3
@@ -62,6 +62,19 @@ typedef struct _tagItem
 	char strDesc[STR_DESC_LENGTH];
 }ITEMINFO, *PITEMINFO;
 
+typedef struct _tagLevelupInfo
+{
+	int					iMinDamage;
+	int					iMaxDamage;
+	int					iMinArmor;
+	int					iMaxArmor;
+	int					iHP;
+	int					iMP;
+}LEVELUPINFO, *PLEVELUPINFO;
+
+#define MAX_LEVEL	10
+
+static int g_iLvUpTable[MAX_LEVEL] = { 4000, 10000, 20000, 35000, 52000, 72000, 90000, 130000,170000, 250000 };
 
 template <typename T>
 void Safe_Delete_VecList(T& p)
