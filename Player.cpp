@@ -200,7 +200,7 @@ bool CPlayer::LevelupCheck()
 void CPlayer::Levelup(JOB eJob)
 {
 	LEVELUPINFO tLevelupInfo = GET_SINGLE(CCore)->GetLevelupInfo(eJob);
-
+	
 	cout << "·¹º§¾÷!" << endl;
 	m_tInfo.iLevel++;
 	m_tInfo.iMinDamage += tLevelupInfo.iMinDamage;

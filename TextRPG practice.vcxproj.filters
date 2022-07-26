@@ -34,6 +34,12 @@
     <Filter Include="05. Inventory">
       <UniqueIdentifier>{741bc09b-d4fc-4a00-80c0-f2461abbfd32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Core\File">
+      <UniqueIdentifier>{702693d8-7bf0-4822-8023-5256b8e23a34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="06. Editor">
+      <UniqueIdentifier>{62ad5b5c-e436-4a96-8058-71eabeea22cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +101,12 @@
     </ClCompile>
     <ClCompile Include="Store.cpp">
       <Filter>04. Store</Filter>
+    </ClCompile>
+    <ClCompile Include="FileStream.cpp">
+      <Filter>01. Core\File</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorCore.cpp">
+      <Filter>06. Editor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="Store.h">
       <Filter>04. Store</Filter>
+    </ClInclude>
+    <ClInclude Include="FileStream.h">
+      <Filter>01. Core\File</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorCore.h">
+      <Filter>06. Editor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,6 @@
 #include <vector>
 #include <iterator>
 
-
 using namespace std;
 
 #include "defines.h"
