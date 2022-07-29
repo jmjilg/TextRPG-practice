@@ -141,6 +141,8 @@
   <ItemGroup>
     <ClCompile Include="EditorCore.cpp" />
     <ClCompile Include="Character.cpp" />
+    <ClCompile Include="EditorItem.cpp" />
+    <ClCompile Include="EditorMonster.cpp" />
     <ClCompile Include="FileStream.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -166,6 +168,8 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="EditorCore.h" />
+    <ClInclude Include="EditorItem.h" />
+    <ClInclude Include="EditorMonster.h" />
     <ClInclude Include="FileStream.h" />
     <ClInclude Include="Flags.h" />
     <ClInclude Include="defines.h" />

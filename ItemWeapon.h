@@ -28,7 +28,7 @@ public:
 	virtual CItem* Clone();
 	OBJECT_TYPE GetObjectType()
 	{
-		return OBJECT_TYPE::MONSTER;
+		return OBJECT_TYPE::WEAPON;
 	}
 	void SetWeaponInfo(int iAttackMin, int iAttackMax, int iCritical)
 	{
@@ -44,5 +44,7 @@ public:
 	{
 		return m_iAttackMax;
 	}
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 

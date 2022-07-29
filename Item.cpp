@@ -39,3 +39,13 @@ void CItem::SetItemInfo(ITEM_TYPE eType, int iPrice, int iSell, const char* pDes
 	strcpy_s(m_tInfo.strDesc, pDesc);
 }
 
+void CItem::Save(CFileStream* pFile)
+{
+	CObj::Save(pFile);
+}
+
+void CItem::Load(CFileStream* pFile)
+{
+	CObj::Load(pFile);
+}
+

@@ -11,6 +11,7 @@
 CPlayer::CPlayer()
 {
 	memset(m_pEquip, 0, sizeof(CItem*) * 2);
+	m_eType = OBJECT_TYPE::PLAYER;
 }
 
 CPlayer::~CPlayer()
@@ -29,22 +30,25 @@ CPlayer::CPlayer(const CPlayer& player) :
 bool CPlayer::Init()
 {
 	char pName[NAME_LENGTH];
-
-	strcpy_s(pName, SetPlayerName());
+	cin.ignore();
+	system("cls");
+	cout << "이름을 입력하세요 : ";
+	cin.getline(pName, NAME_LENGTH - 1, '\n');
+	SetName(pName);
 
 	switch (SetPlayerJob())
 	{
 	case (int)JOB::WORRIAR:
 		m_eJob = JOB::WORRIAR;
-		SetCharacterInfo(pName, 5, 10, 10, 15, 200, 100, 0, 1);
+		SetCharacterInfo(5, 10, 10, 15, 200, 100, 0, 1);
 		break;
 	case (int)JOB::ARCHER:
 		m_eJob = JOB::ARCHER;
-		SetCharacterInfo(pName, 7, 12, 7, 12, 150, 150, 0, 1);
+		SetCharacterInfo(7, 12, 7, 12, 150, 150, 0, 1);
 		break;
 	case (int)JOB::WIZARD:
 		m_eJob = JOB::WIZARD;
-		SetCharacterInfo(pName, 10, 15, 5, 7, 100, 200, 0, 1);
+		SetCharacterInfo(10, 15, 5, 7, 100, 200, 0, 1);
 		break;
 	}
 
@@ -56,7 +60,7 @@ bool CPlayer::Init()
 void CPlayer::Render()
 {
 
-	cout << "이름 : " << m_tInfo.name << "\t경험치 : " << m_tInfo.iExp << endl;
+	cout << "이름 : " << GetName() << "\t경험치 : " << m_tInfo.iExp << endl;
 
 	if (!EquipEmpty(ITEM_TYPE::WEAPON)) 
 	{
@@ -109,15 +113,6 @@ void CPlayer::Render()
 CObj* CPlayer::Clone()
 {
 	return new CPlayer(*this);
-}
-
-char* CPlayer::SetPlayerName()
-{
-	cout << "이름을 입력하세요 : ";
-	char name[NAME_LENGTH];
-	cin.getline(name, NAME_LENGTH - 1, '\n');
-
-	return name;
 }
 
 int CPlayer::SetPlayerJob()
@@ -211,6 +206,16 @@ void CPlayer::Levelup(JOB eJob)
 	m_tInfo.iHP += tLevelupInfo.iHP;
 	m_tInfo.iMPmax += tLevelupInfo.iMP;
 	m_tInfo.iMP += tLevelupInfo.iMP;
+}
+
+void CPlayer::Save(CFileStream* pFile)
+{
+	CCharacter::Save(pFile);
+}
+
+void CPlayer::Load(CFileStream* pFile)
+{
+	CCharacter::Load(pFile);
 }
 
 

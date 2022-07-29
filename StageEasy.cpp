@@ -21,7 +21,7 @@ bool CStageEasy::Init()
 void CStageEasy::Run()
 {
 	CPlayer* pPlayer = (CPlayer*)GET_SINGLE(CObjectManager)->FindObject("Player");
-	CMonster* pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CloneObject("Goblin");
+	CMonster* pMonster = (CMonster*)GET_SINGLE(CObjectManager)->CloneObject(STAGE_LEVEL::EASY);
 
 
 	while (true)

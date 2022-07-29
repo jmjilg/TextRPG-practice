@@ -2,6 +2,7 @@
 
 CItemWeapon::CItemWeapon()
 {
+	m_eType = OBJECT_TYPE::WEAPON;
 }
 
 CItemWeapon::~CItemWeapon()
@@ -19,4 +20,14 @@ void CItemWeapon::Render()
 CItem* CItemWeapon::Clone()
 {
 	return new CItemWeapon(*this);
+}
+
+void CItemWeapon::Save(CFileStream* pFile)
+{
+	CItem::Save(pFile);
+}
+
+void CItemWeapon::Load(CFileStream* pFile)
+{
+	CItem::Load(pFile);
 }

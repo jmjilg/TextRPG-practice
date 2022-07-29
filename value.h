@@ -49,7 +49,6 @@ typedef struct _tagCharacter
 	int					iMPmax;
 	int					iExp;
 	int					iLevel;
-	char				name[NAME_LENGTH];
 }CHARACTER, *PCHARACTER;
 
 typedef struct _tagItem

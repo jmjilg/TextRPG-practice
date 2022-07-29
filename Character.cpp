@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "FileStream.h"
 
 CCharacter::CCharacter()
 {
@@ -9,7 +10,7 @@ CCharacter::~CCharacter()
 }
 
 
-void CCharacter::SetCharacterInfo(const char* name, int iMinDamage, int iMaxDamage,
+void CCharacter::SetCharacterInfo(int iMinDamage, int iMaxDamage,
 	int	iMinArmor, int	iMaxArmor, int iHP, int iMP, int iExp, int iLevel)
 {
 	m_tInfo.iMinDamage = iMinDamage;
@@ -22,7 +23,6 @@ void CCharacter::SetCharacterInfo(const char* name, int iMinDamage, int iMaxDama
 	m_tInfo.iMP = iMP;
 	m_tInfo.iExp = iExp;
 	m_tInfo.iLevel = iLevel;
-	strcpy_s(m_tInfo.name, NAME_LENGTH, name);
 }
 
 int CCharacter::GetDamage()
@@ -47,6 +47,19 @@ bool CCharacter::Die(int iDamage)
 	return false;
 }
 
+void CCharacter::Save(CFileStream* pFile)
+{
+	CObj::Save(pFile);
+	pFile->Write(&m_tInfo, sizeof(m_tInfo));
+
+}
+
+void CCharacter::Load(CFileStream* pFile)
+{
+	CObj::Load(pFile);
+	pFile->Read(&m_tInfo, sizeof(m_tInfo));
+}
+
 bool CCharacter::Init()
 {
 	return false;
@@ -59,7 +72,7 @@ CObj* CCharacter::Clone()
 
 void CCharacter::Render()
 {
-	cout << "이름 : " << m_tInfo.name << "\t경험치 : " << m_tInfo.iExp << endl;
+	cout << "이름 : " << GetName() << "\t경험치 : " << m_tInfo.iExp << endl;
 	cout << "공격력 : " << m_tInfo.iMinDamage  << "~" << m_tInfo.iMaxDamage <<
 		"\t방어력 : " << m_tInfo.iMinArmor << "~" << m_tInfo.iMaxArmor << endl;
 	cout << "체력 : " << m_tInfo.iHP << "/" << m_tInfo.iHPmax << "\t마력 : " <<

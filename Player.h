@@ -32,7 +32,6 @@ public:
 	virtual bool Init();
 	virtual void Render();
 	virtual CObj* Clone();
-	char* SetPlayerName();
 	int SetPlayerJob();
 	virtual int GetDamage();
 	virtual int GetArmor();
@@ -78,5 +77,7 @@ public:
 		return m_eJob;
 	}
 
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 

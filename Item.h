@@ -26,14 +26,12 @@ public:
 	{
 		return m_tInfo.eType;
 	}
-	OBJECT_TYPE GetObjectType()
-	{
-		return OBJECT_TYPE::MONSTER;
-	}
 	int GetPrice()	const
 	{
 		return m_tInfo.iPrice;
 	}
 	void SetItemInfo(ITEM_TYPE eType, int iPrice, int iSell, const char* pDesc);
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 

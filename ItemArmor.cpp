@@ -2,6 +2,7 @@
 
 CItemArmor::CItemArmor()
 {
+	m_eType = OBJECT_TYPE::ARMOR;
 }
 
 CItemArmor::~CItemArmor()
@@ -20,6 +21,16 @@ void CItemArmor::Render()
 CItem* CItemArmor::Clone()
 {
 	return new CItemArmor(*this);
+}
+
+void CItemArmor::Save(CFileStream* pFile)
+{
+	CItem::Save(pFile);
+}
+
+void CItemArmor::Load(CFileStream* pFile)
+{
+	CItem::Load(pFile);
 }
 
 

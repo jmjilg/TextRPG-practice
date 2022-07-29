@@ -26,7 +26,7 @@ public:
 	virtual CItem* Clone();
 	OBJECT_TYPE GetObjectType()
 	{
-		return OBJECT_TYPE::MONSTER;
+		return OBJECT_TYPE::ARMOR;
 	}
 	void SetArmorInfo(int iArmorMin, int iArmorMax)
 	{
@@ -41,5 +41,7 @@ public:
 	{
 		return m_iArmorMax;
 	}
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 

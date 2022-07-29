@@ -3,6 +3,15 @@
 
 class CEditorCore
 {
+private:
+	enum class EDITOR_MENU
+	{
+		NONE,
+		MONSTER,
+		ITEM,
+		EXIT
+	};
+
 public:
 	bool Init();
 	void Run();

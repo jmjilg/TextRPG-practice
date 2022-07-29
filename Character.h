@@ -18,10 +18,12 @@ public:
 	virtual bool Init();
 	virtual CObj* Clone();
 	virtual void Render();
-	void SetCharacterInfo(const char* name, int iMinDamage, int iMaxDamage, int	iMinArmor, int	iMaxArmor,
+	void SetCharacterInfo(int iMinDamage, int iMaxDamage, int	iMinArmor, int	iMaxArmor,
 		int iHP, int iMP, int iExp, int iLevel);
 	virtual int GetDamage();
 	virtual int GetArmor();
 	bool Die(int iDamage);
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 

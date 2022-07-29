@@ -6,22 +6,17 @@ class CObj
 {
 protected:
 	CObj();
+	CObj(const CObj& obj);
 	virtual ~CObj() = 0;
 
 private:
 	friend class CObjectManager;
 protected:    
 	JOB     m_eJob;
-	string  m_strJobName;
 	string m_strName;
 	OBJECT_TYPE m_eType;
 
 public:
-	virtual bool Init();
-	virtual CObj* Clone() = 0;
-	virtual void Render() = 0;
-	virtual OBJECT_TYPE GetObjectType() = 0;
-
 	void SetName(const char* pName)
 	{
 		m_strName = pName;
@@ -31,5 +26,14 @@ public:
 	{
 		return m_strName;
 	}
+	OBJECT_TYPE GetObjectType()	const
+	{
+		return m_eType;
+	}
+	virtual bool Init();
+	virtual CObj* Clone() = 0;
+	virtual void Render() = 0;
+	virtual void Save(class CFileStream* pFile);
+	virtual void Load(class CFileStream* pFile);
 };
 
