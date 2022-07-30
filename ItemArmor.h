@@ -16,6 +16,7 @@ private:
 	friend class CStore;
 	friend class CStoreArmor;
 	friend class CStoreManager;
+	friend class CEditorItem;
 
 private:
 	int m_iArmorMin;

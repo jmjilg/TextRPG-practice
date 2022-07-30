@@ -1,4 +1,5 @@
 #include "Item.h"
+#include "FileStream.h"
 
 CItem::CItem()
 {
@@ -42,10 +43,45 @@ void CItem::SetItemInfo(ITEM_TYPE eType, int iPrice, int iSell, const char* pDes
 void CItem::Save(CFileStream* pFile)
 {
 	CObj::Save(pFile);
+
+	pFile->Write(&m_tInfo.eType, sizeof(m_tInfo.eType));
+
+	int iLength = m_tInfo.strTypeName.length();
+
+	pFile->Write(&iLength, 4);
+
+	pFile->Write((void*)m_tInfo.strTypeName.c_str(), iLength);
+
+	pFile->Write(&m_tInfo.iPrice, 4);
+	pFile->Write(&m_tInfo.iSell, 4);
+
+	pFile->Write((void*)m_tInfo.strDesc, STR_DESC_LENGTH);
+
 }
 
 void CItem::Load(CFileStream* pFile)
 {
 	CObj::Load(pFile);
+
+	pFile->Read(&m_tInfo.eType, sizeof(m_tInfo.eType));
+
+	int iLength = 0;
+
+	pFile->Read(&iLength, 4);
+
+	char* pBuffer = new char[iLength + 1];
+	memset(pBuffer, 0, iLength);
+	pBuffer[iLength] = 0;
+
+	pFile->Read(pBuffer, iLength);
+
+	m_tInfo.strTypeName = pBuffer;
+
+	pFile->Read(&m_tInfo.iPrice, 4);
+	pFile->Read(&m_tInfo.iSell, 4);
+
+	pFile->Read(&m_tInfo.strDesc, STR_DESC_LENGTH);
+
+	SAFE_DELETE(pBuffer);
 }
 

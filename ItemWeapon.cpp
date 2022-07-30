@@ -1,4 +1,5 @@
 #include "ItemWeapon.h"
+#include "FileStream.h"
 
 CItemWeapon::CItemWeapon()
 {
@@ -25,9 +26,18 @@ CItem* CItemWeapon::Clone()
 void CItemWeapon::Save(CFileStream* pFile)
 {
 	CItem::Save(pFile);
+
+	pFile->Write(&m_iAttackMin, 4);
+	pFile->Write(&m_iAttackMax, 4);
+	pFile->Write(&m_fCritical, sizeof(m_fCritical));
+
 }
 
 void CItemWeapon::Load(CFileStream* pFile)
 {
 	CItem::Load(pFile);
+
+	pFile->Read(&m_iAttackMin, 4);
+	pFile->Read(&m_iAttackMax, 4);
+	pFile->Read(&m_fCritical, sizeof(m_fCritical));
 }

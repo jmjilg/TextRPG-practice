@@ -17,6 +17,7 @@ private:
 	friend class CStoreWeapon;
 	friend class CStoreManager;
 	friend class CInventory;
+	friend class CEditorItem;
 
 private:
 	int m_iAttackMin;
@@ -30,11 +31,11 @@ public:
 	{
 		return OBJECT_TYPE::WEAPON;
 	}
-	void SetWeaponInfo(int iAttackMin, int iAttackMax, int iCritical)
+	void SetWeaponInfo(int iAttackMin, int iAttackMax, float fCritical)
 	{
 		m_iAttackMin = iAttackMin;
 		m_iAttackMax = iAttackMax;
-		m_fCritical = iCritical;
+		m_fCritical = fCritical;
 	}
 	int GetAttackMin()	const
 	{

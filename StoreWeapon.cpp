@@ -4,6 +4,7 @@
 #include "Item.h"
 #include "Player.h"
 #include "Inventory.h"
+#include "FileStream.h"
 
 CStoreWeapon::CStoreWeapon()
 {
@@ -16,16 +17,36 @@ CStoreWeapon::~CStoreWeapon()
 bool CStoreWeapon::Init()
 {
 
-	CItemWeapon* pWeapon;
+	CItemWeapon* pWeapon = NULL;
 
-	pWeapon = (CItemWeapon*)CreateItem("목검", ITEM_TYPE::WEAPON, 1000, 500, "나무로 만든 검");
-	pWeapon->SetWeaponInfo(10, 15, 10);
+	CFileStream file("StoreWeapon.swp", "rb");
 
-	pWeapon = (CItemWeapon*)CreateItem("철검", ITEM_TYPE::WEAPON, 3000, 1500, "철로 만든 검");
-	pWeapon->SetWeaponInfo(30, 45, 20);
-	
-	pWeapon = (CItemWeapon*)CreateItem("무한의 대검", ITEM_TYPE::WEAPON, 10000, 5000, "무한의 대검");
-	pWeapon->SetWeaponInfo(50, 70, 30);
+	if (file.GetOpen())
+	{
+		int iWeaponCount = 0;
+		file.Read(&iWeaponCount, 4);
+
+		for (size_t i = 0; i < iWeaponCount; ++i)
+		{
+			pWeapon = new CItemWeapon;
+
+			pWeapon->Load(&file);
+
+			m_vecItem.push_back(pWeapon);
+		}
+	}
+
+	else
+	{
+		pWeapon = (CItemWeapon*)CreateItem("목검", ITEM_TYPE::WEAPON, 1000, 500, "나무로 만든 검");
+		pWeapon->SetWeaponInfo(10, 15, 10);
+
+		pWeapon = (CItemWeapon*)CreateItem("철검", ITEM_TYPE::WEAPON, 3000, 1500, "철로 만든 검");
+		pWeapon->SetWeaponInfo(30, 45, 20);
+
+		pWeapon = (CItemWeapon*)CreateItem("무한의 대검", ITEM_TYPE::WEAPON, 10000, 5000, "무한의 대검");
+		pWeapon->SetWeaponInfo(50, 70, 30);
+	}
 
 	return true;
 }

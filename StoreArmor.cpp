@@ -6,6 +6,7 @@
 #include "Obj.h"
 #include "Player.h"
 #include "Inventory.h"
+#include "FileStream.h"
 
 CStoreArmor::CStoreArmor()	
 {
@@ -18,17 +19,36 @@ CStoreArmor::~CStoreArmor()
 
 bool CStoreArmor::Init()
 {
-	CItemArmor* pArmor;
+	CItemArmor* pArmor = NULL;
 
-	pArmor = (CItemArmor*)CreateItem("Ãµ°©¿Ê", ITEM_TYPE::ARMOR, 1000, 500, "ÃµÀ¸·Î ¸¸µç °©¿Ê");
-	pArmor->SetArmorInfo(5, 10);
+	CFileStream file("StoreArmor.sar", "rb");
 
-	pArmor = (CItemArmor*)CreateItem("°¡½Ã°©¿Ê", ITEM_TYPE::ARMOR, 3000, 1500, "°¡½Ã°¡ ¹ÚÈù °©¿Ê");
-	pArmor->SetArmorInfo(15, 25);
+	if (file.GetOpen())
+	{
+		int iArmorCount = 0;
+		file.Read(&iArmorCount, 4);
 
-	pArmor = (CItemArmor*)CreateItem("¼öÈ£Ãµ»ç", ITEM_TYPE::ARMOR, 10000, 5000, "ÃµÀ¸·Î ¸¸µç °©¿Ê");
-	pArmor->SetArmorInfo(35, 50);
+		for (size_t i = 0; i < iArmorCount; ++i)
+		{
+			pArmor = new CItemArmor;
 
+			pArmor->Load(&file);
+
+			m_vecItem.push_back(pArmor);
+		}
+	}
+
+	else
+	{
+		pArmor = (CItemArmor*)CreateItem("Ãµ°©¿Ê", ITEM_TYPE::ARMOR, 1000, 500, "ÃµÀ¸·Î ¸¸µç °©¿Ê");
+		pArmor->SetArmorInfo(5, 10);
+
+		pArmor = (CItemArmor*)CreateItem("°¡½Ã°©¿Ê", ITEM_TYPE::ARMOR, 3000, 1500, "°¡½Ã°¡ ¹ÚÈù °©¿Ê");
+		pArmor->SetArmorInfo(15, 25);
+
+		pArmor = (CItemArmor*)CreateItem("¼öÈ£Ãµ»ç", ITEM_TYPE::ARMOR, 10000, 5000, "ÃµÀ¸·Î ¸¸µç °©¿Ê");
+		pArmor->SetArmorInfo(35, 50);
+	}
 	return true;
 }
 

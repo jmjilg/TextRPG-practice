@@ -15,6 +15,7 @@ public:
 
 private:
 	friend class CObjectManager;
+	friend class CEditorItem;
 
 protected:
 	ITEMINFO	m_tInfo;
@@ -22,6 +23,7 @@ protected:
 public:
 	bool Init();
 	virtual void Render() = 0;
+	virtual CObj* Clone() = 0;
 	ITEM_TYPE GetItemType()
 	{
 		return m_tInfo.eType;

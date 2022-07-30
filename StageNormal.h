@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Monster.h"
-#include "Player.h"
 #include "Stage.h"
 
 class CStageNormal :
@@ -10,10 +8,6 @@ class CStageNormal :
 public:
 	CStageNormal();
 	~CStageNormal();
-
-private:
-	class CMonster* m_pMonster;
-
 
 public:
 	virtual bool Init();
